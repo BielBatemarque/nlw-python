@@ -5,7 +5,7 @@ def handle_errors(error: Exception) -> HttpResponse:
     if isinstance(error, HttpUnprocessableEntityError):
         return HttpResponse(
             status_code=error.status_code,
-            body={
+            body = {
                 "errors": [{
                     "title": error.name,
                     "details": error.message
@@ -14,8 +14,8 @@ def handle_errors(error: Exception) -> HttpResponse:
         )
 
     return HttpResponse(
-        status_code=500,
-        body={
+        status_code = 500,
+        body = {
             "errors": [{
                 "title": "Server Error",
                 "detail": str(error)
